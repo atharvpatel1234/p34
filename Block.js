@@ -17,7 +17,7 @@ class Block{
         push();
         translate(pos.x,pos.y);
         rotate(angle);
-        rectMode(CENTRE);
+        rectMode(CENTER);
         rect(0,0,this.width,this.height);
         pop();
     }

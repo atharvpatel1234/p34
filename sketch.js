@@ -1,16 +1,16 @@
 const Engine = Matter.Engine;
-const world = Matter.world;
+const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Constraint = Matter.Constraint;
 
 function preload() {
-  backgroundImage = loadImage("images/background.jpg");
+  backgroundImage = loadImage("background.jpg");
 
 }
 
 function setup() {
-  createCanvas(900, 400);
+  createCanvas(1200, 400);
   
   engine = Engine.create();
   world = engine.world;
@@ -18,6 +18,7 @@ function setup() {
 
   ground = new Ground(200,400,600,5);
   hero = new Hero(400,5,100,100);
+  monster = new Monster(900,100,200,200);
   attach = new Throw(hero.body,{x:100,y:460});
   block1 = new Block(270,350,30,40);
   block2 = new Block(310,350,30,40);
@@ -40,7 +41,7 @@ function setup() {
 }
 
 function draw() {
-  rectMode(CENTRE);
+  rectMode(CENTER);
   background(backgroundImage);
 
 
@@ -61,7 +62,12 @@ function draw() {
   block13.display();
   block14.display();
   block15.display();
+  monster.display();
  
 
+}
+
+function mouseDragged(){
+  Matter.Body.setPosition(hero.body,{x:mouseX,y:mouseY});
 }
 
